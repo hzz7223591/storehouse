@@ -1,4 +1,17 @@
 Storehouse::Application.routes.draw do
+   resources :users
+   resources :sessions , only:[:new, :create,:destroy]
+   get "users/new"
+
+   match'/signup',to:"users#new"
+  get "primary_pages/home"
+
+  get "primary_pages/help"
+  match '/help', to: 'primary_pages#help'
+  match '/contact', to: 'primary_pages#contact'
+  match '/about', to: 'primary_pages#about'
+  root :to => 'primary_pages#home'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
